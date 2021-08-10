@@ -3,7 +3,6 @@ const Images = require('../models/images');
 const router = Router();
 
 router.get('/',  (req, res) => {
-    console.log('add get rout')
     res.redirect('/');
 });
 
