@@ -22,6 +22,9 @@ app.use('/add', addRoutes);
 app.use('/all', allRoutes);
 app.use('/image', imageRoutes);
 app.use('/delete', removeRoutes);
+app.use('/image/info', imageRoutes);
+app.use('/image/last/info', imageRoutes);
+app.use('/image/logs', imageRoutes);
 
 
 const PORT = process.env.PORT || 3050;
