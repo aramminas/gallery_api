@@ -46,13 +46,13 @@ router.post('/info', async (req, res) => {
 });
 
 router.get('/logs', async(req, res) => {
-    const {id} = req.query;
+    const {id, limit, offset} = req.query;
     const image = await Images.find({id});
     imageId = image[0]._id;
-    const imageHistory = await ImagesHistory.find({imageId});
-
+    const imageHistory = await ImagesHistory.find({imageId}).skip( +offset).limit( +limit);
+    const count = await ImagesHistory.find({imageId}).countDocuments();
     if(imageHistory.length > 0){
-        res.json({status: 1, logs: imageHistory, image: image[0]});
+        res.json({status: 1, logs: imageHistory, count, image: image[0]});
         return;
     }
     res.json( {status: 0, image: image[0], message: 'Image logs is empty'});
