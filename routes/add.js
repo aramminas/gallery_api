@@ -19,7 +19,7 @@ router.post('/',  async (req, res) => {
 
     }catch (e){
         console.log('Error: ', e);
-        res.json({status: 0, message: "Error:" + e});
+        res.json({status: 0, message: `Error: ${e}`});
     }
 });
 
